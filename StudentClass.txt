@@ -1,0 +1,84 @@
+//STUDENTCLASS//
+package assignment; 
+public class Student { 
+private int rollNumber; 
+private String name;
+private int marksObtained; 
+public int getRollNumber() 
+{ 
+return rollNumber; 
+} 
+public void setRollNumber(int rollNumber) { this.rollNumber = rollNumber; 
+System.out.println(rollNumber); 
+} 
+public String getName() { 
+return name; 
+} 
+public void setName(String name) { 
+this.name = name; 
+System.out.println(name); 
+} 
+public int getMarksObtained() { 
+return marksObtained; 
+} 
+public void setMarksObtained(int marksObtained) { this.marksObtained = marksObtained; 
+} 
+public double calcPerc() { 
+return ((double) marksObtained / 500) * 100; } 
+}
+
+//JUNITTEST//
+package assignment; 
+import org.junit.Test; 
+import static org.junit.Assert.*; 
+public class StudentTest 
+{ 
+@Test 
+public void testGetAndSetRollNumber() 
+{ 
+Student student = new Student();
+student.setRollNumber(21888); 
+assertEquals(21888, student.getRollNumber()); } 
+@Test 
+public void testGetAndSetName() 
+{ 
+Student student = new Student(); 
+student.setName("Yashraj Fal Dessai"); 
+assertEquals("Yashraj Fal Dessai", student.getName()); } 
+@Test 
+public void testGetAndSetMarksObtained() { 
+Student student = new Student(); 
+student.setMarksObtained(350); 
+assertEquals(350, student.getMarksObtained()); } 
+@Test 
+public void testCalcPerc() 
+{ 
+Student student = new Student(); 
+student.setMarksObtained(350); 
+assertEquals(70.0, student.calcPerc(), 0.01); } 
+}
+
+
+//TESTRUNNER//
+package assignment; 
+import org.junit.runner.JUnitCore; 
+import org.junit.runner.Result; 
+import org.junit.runner.notification.Failure; 
+public class Testrunner 
+{ 
+public static void main(String[]args) { 
+Result result1 = JUnitCore.runClasses( StudentTest.class ); 
+for(Failure fail : result1.getFailures()) { 
+System.out.println(fail.toString()); 
+} 
+if(result1.wasSuccessful() == true) { 
+System.out.println("Test Passed"); 
+System.out.println(result1.wasSuccessful()); 
+} 
+else {
+System.out.println("Test failed"); 
+} 
+} 
+} 
+
+
